@@ -1,0 +1,396 @@
+:root {
+    --bg: #0D0F14;
+    --card: #151820;
+    --surface: #1C1F2E;
+
+    --accent: #6C63FF;
+    --accent-dim: rgba(108, 99, 255, 0.14);
+    --accent-glow: rgba(108, 99, 255, 0.22);
+
+    --text: #E8EAFF;
+    --muted: #8990B0;
+    --border: #252840;
+
+    --success: #22C55E;
+    --error: #EF4444;
+
+    --shadow: rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] {
+    --bg: #F0F2FF;
+    --card: #FFFFFF;
+    --surface: #ECEEFF;
+
+    --accent: #5B53E0;
+    --accent-dim: rgba(91, 83, 224, 0.09);
+    --accent-glow: rgba(91, 83, 224, 0.18);
+
+    --text: #1A1B2E;
+    --muted: #6870A0;
+    --border: #D4D6F0;
+
+    --shadow: rgba(108, 99, 255, 0.10);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+
+    font-family: "Inter", sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+
+    transition:
+        background-color 0.3s,
+        color 0.3s;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    max-width: 580px;
+
+    padding: 28px 20px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.logo-text span {
+    color: var(--accent);
+}
+
+.theme-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--surface);
+    color: var(--muted);
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.theme-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    padding: 40px 20px;
+}
+
+.card {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 40px;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+
+    box-shadow: 0 24px 64px var(--shadow);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 18px;
+    padding: 5px 12px;
+
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-glow);
+    border-radius: 100px;
+}
+
+.card-title {
+    margin-bottom: 10px;
+
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.card-desc {
+    margin-bottom: 28px;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+.divider {
+    height: 1px;
+    margin-bottom: 28px;
+
+    background: var(--border);
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.input-prefix {
+    position: absolute;
+    top: 50%;
+    left: 14px;
+
+    transform: translateY(-50%);
+
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.url-input {
+    width: 100%;
+    padding: 14px 14px 14px 44px;
+
+    font-size: 14px;
+    color: var(--text);
+
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+.url-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.download-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 15px;
+
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+}
+
+.download-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+.steps {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 20px;
+}
+
+.step {
+    flex: 1;
+
+    padding: 8px 4px;
+
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+
+    color: var(--muted);
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.step.active {
+    font-weight: 600;
+
+    color: var(--accent);
+
+    background: var(--accent-dim);
+    border-color: var(--accent);
+}
+
+.step.done {
+    color: var(--success);
+
+    background: rgba(34, 197, 94, 0.10);
+    border-color: rgba(34, 197, 94, 0.40);
+}
+
+.step-arrow {
+    font-size: 14px;
+    color: var(--border);
+}
+
+.status-box { 
+    display: none; 
+    margin-top: 16px; 
+    font-size: 13px; 
+    font-weight: 500; 
+    text-align: center; 
+    letter-spacing: 0.3px;
+    animation: slideUp 0.3s ease-out; /* Smooth fade-in effect */
+}
+
+/* Remove the chunky backgrounds and borders, just use clean text colors */
+.status-box.success { display: block; color: var(--success); }
+.status-box.error { display: block; color: var(--error); }
+.status-box.processing { display: block; color: var(--accent); }
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Spinner */
+.spinner { 
+    width: 16px; 
+    height: 16px; 
+    border: 2px solid rgba(255, 255, 255, 0.30); 
+    border-top-color: #fff; 
+    border-radius: 50%; 
+    animation: spin 0.7s linear infinite; 
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.footer {
+    padding: 20px 20px 36px;
+
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* --- PREMIUM UI ANIMATIONS --- */
+
+/* 1. The Smooth Slide-and-Fade Reveal */
+@keyframes smoothReveal {
+    0% { opacity: 0; transform: translateY(10px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.reveal-anim {
+    /* Changed 'forwards' to 'both' so elements stay invisible during their delay phase */
+    animation: smoothReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Staggered Delays for Page Load Cascade */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+
+/* 2. The Satisfying Button Press */
+
+/* --- DROPDOWN STYLING & ANIMATION --- */
+.quality-select {
+    width: 100%; 
+    padding: 14px; 
+    background: var(--surface); 
+    border: 1.5px solid var(--border); 
+    border-radius: 12px; 
+    color: var(--text); 
+    font-size: 14px; 
+    outline: none; 
+    margin-bottom: 20px; 
+    font-family: 'Inter', sans-serif; 
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
+}
+
+.quality-select:focus, .quality-select:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.download-btn {
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.download-btn:hover {
+    opacity: 0.65;
+    transition: ease 0.2s;
+}
+
+.download-btn:active:not(:disabled) {
+    transform: scale(0.97); /* Physically pushes the button down when clicked */
+    opacity: 0.9;
+}
+
+/* 3. Smooth Dropdown Hover */
+#qualitySelect {
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#qualitySelect:focus, #qualitySelect:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}

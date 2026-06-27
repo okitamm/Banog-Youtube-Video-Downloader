@@ -1,0 +1,13 @@
+# Virtual Environments
+venv/
+env/
+
+# Downloaded Media
+downloads/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# OS Files
+.DS_Store

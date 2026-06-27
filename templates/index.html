@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <nav class="navbar reveal-anim delay-1">
+        <a href="/" class="logo">
+            <div><img class="logo-icon" src="{{ url_for('static', filename='android-chrome-192x192.png') }}" alt="Banog Logo"></div>
+            <span class="logo-text">Ba<span>nog</span></span>
+        </a>
+        <button class="theme-btn" id="themeToggle" title="Toggle theme">🌙</button>
+    </nav>
+
+    <main class="reveal-anim delay-2">
+        <div class="card">
+            <div class="badge">⚡ Max Quality Mode</div>
+            <h1 class="card-title">Download YouTube<br>at peak quality.</h1>
+            <p class="card-desc">Paste a YouTube link below. Banog fetches the highest available resolution and merges audio + video using FFmpeg.</p>
+            <div class="divider"></div>
+
+            <div class="input-wrapper">
+                <span class="input-prefix">🔗</span>
+                <input type="text" class="url-input" id="urlInput" placeholder="https://youtube.com/watch?v=..." autocomplete="off">
+            </div>
+
+            <select id="qualitySelect" class="quality-select" aria-label="Select video quality">
+                <option value="peak">Peak Quality (Max Resolution)</option>
+                <option value="1080">1080p (Full HD)</option>
+                <option value="720">720p (Standard HD)</option>
+                <option value="360">360p (Data Saver)</option>
+            </select>
+
+            <button class="download-btn" id="downloadBtn" onclick="startDownload()">
+                <span id="btnText">Download Now</span>
+            </button>
+
+            <button class="download-btn" id="resetBtn" onclick="resetUI()" style="display: none; background: var(--surface); color: var(--text); border: 1.5px solid var(--border);">
+                <span>↺ Another One</span>
+            </button>
+
+            <div id="progressContainer" style="display: none; width: 100%; background: var(--surface); border-radius: 12px; margin-bottom: 20px; overflow: hidden; border: 1.5px solid var(--border); height: 8px;">
+                <div id="progressBar" style="width: 0%; height: 100%; background: var(--accent); transition: width 0.2s linear;"></div>
+            </div>
+
+            <div class="status-box" id="statusBox"></div>
+        </div>
+    </main>
+
+    <footer class="footer reveal-anim delay-3">
+        © 2026 Tom Lloyd Del Rosario. All rights reserved.
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
