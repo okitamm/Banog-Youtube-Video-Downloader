@@ -48,4 +48,5 @@ def progress_stream():
 
 if __name__ == '__main__':
     print("\n[SYSTEM] Initializing Flask web server architecture...")
-    app.run(debug=True, port=5000)
+    # Change it to look exactly like this:
+    app.run(host='0.0.0.0', debug=False, port=5000)

@@ -1,6 +1,5 @@
 import yt_dlp
 import os
-import shutil
 
 current_progress = {
     "status": "idle",
@@ -46,8 +45,8 @@ def download_video(url, quality="peak"):
         'quiet': True, 
         'color': 'no_color', 
         
-        # 3. UPDATE THIS LINE: Point yt-dlp to the writable copy
-        'cookiefile': writable_cookie_path if os.path.exists(writable_cookie_path) else None,  
+        # COMMENT THIS OUT OR DELETE IT:
+        # 'cookiefile': writable_cookie_path if os.path.exists(writable_cookie_path) else None,  
         
         'postprocessor_args': {
             'merger': ['-c:a', 'aac']
