@@ -41,6 +41,7 @@ def download_video(url, quality="peak"):
         'outtmpl': 'downloads/%(title)s_%(resolution)s.%(ext)s', 
         'quiet': True, 
         'color': 'no_color', 
+        'cookiefile': '/etc/secrets/cookies.txt',  # <--- ADD THIS LINE RIGHT HERE
         'postprocessor_args': {
             'merger': ['-c:a', 'aac']
         },
