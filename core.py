@@ -1,5 +1,6 @@
 import yt_dlp
 import os
+import shutil
 
 current_progress = {
     "status": "idle",
@@ -28,20 +29,26 @@ def download_video(url, quality="peak"):
     
     os.makedirs('downloads', exist_ok=True)
     
-    # NEW: Dynamic resolution targeting
+    # 2. ADD THIS BLOCK: Copy the secret cookies to a writable location
+    writable_cookie_path = 'downloads/temp_cookies.txt'
+    if os.path.exists('/etc/secrets/cookies.txt'):
+        shutil.copyfile('/etc/secrets/cookies.txt', writable_cookie_path)
+    
     if quality == 'peak':
         format_string = 'bestvideo[ext=mp4]+bestaudio/best'
     else:
-        # This tells yt-dlp: "Get the best video up to exactly this height (1080, 720, or 360)"
         format_string = f'bestvideo[height<={quality}][ext=mp4]+bestaudio/best'
     
     ydl_opts = {
-        'format': format_string,  # Use our dynamic string here
+        'format': format_string,  
         'merge_output_format': 'mp4',
         'outtmpl': 'downloads/%(title)s_%(resolution)s.%(ext)s', 
         'quiet': True, 
         'color': 'no_color', 
-        'cookiefile': '/etc/secrets/cookies.txt',  # <--- ADD THIS LINE RIGHT HERE
+        
+        # 3. UPDATE THIS LINE: Point yt-dlp to the writable copy
+        'cookiefile': writable_cookie_path if os.path.exists(writable_cookie_path) else None,  
+        
         'postprocessor_args': {
             'merger': ['-c:a', 'aac']
         },
